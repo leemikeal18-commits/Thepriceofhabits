@@ -367,6 +367,87 @@
   @media (max-width:760px){
     .future-grid{grid-template-columns:1fr;}
   }
+
+  .growth-wrap{padding:0 0 56px;}
+  .growth-chart-card{
+    background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 24px 14px;
+  }
+  .growth-axis{
+    display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;
+    font-size:11px;color:var(--ink-soft);margin-top:6px;padding:0 2px;
+  }
+
+  .sim-wrap{display:grid;grid-template-columns:1fr 1.4fr;gap:20px;max-width:1000px;margin:0 auto 40px;align-items:start;}
+  .sim-controls{
+    background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px 24px;
+    display:flex;flex-direction:column;gap:22px;
+  }
+  .sim-slider-group{display:flex;flex-direction:column;gap:10px;}
+  .sim-slider-label{
+    display:flex;justify-content:space-between;align-items:baseline;font-size:13px;color:var(--ink);
+  }
+  .sim-slider-val{font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--teal);font-size:15px;}
+  .sim-slider-group select, .sim-slider-group input[type=text]{
+    width:100%;border:1px solid var(--line);border-radius:8px;padding:10px 12px;
+    font-size:14px;font-family:'Inter',sans-serif;background:var(--paper);color:var(--ink);
+  }
+  .sim-slider-group input[type=range]{
+    -webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:999px;
+    background:var(--paper-2);outline:none;cursor:pointer;
+  }
+  .sim-slider-group input[type=range]::-webkit-slider-thumb{
+    -webkit-appearance:none;appearance:none;width:20px;height:20px;border-radius:50%;
+    background:var(--teal);border:3px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,0.25);cursor:pointer;
+  }
+  .sim-slider-group input[type=range]::-moz-range-thumb{
+    width:20px;height:20px;border-radius:50%;background:var(--teal);border:3px solid #fff;
+    box-shadow:0 1px 4px rgba(0,0,0,0.25);cursor:pointer;
+  }
+  .sim-results{display:flex;flex-direction:column;gap:16px;}
+  .sim-habit-label{
+    font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;margin:0;
+  }
+  .sim-stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .sim-stat{
+    background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;
+  }
+  .sim-stat .l{font-size:11px;color:var(--ink-soft);font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:0.03em;margin:0 0 4px;}
+  .sim-stat .v{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:19px;margin:0;}
+  .sim-stat--highlight{background:var(--ink);border-color:var(--ink);grid-column:1/-1;}
+  .sim-stat--highlight .l{color:#B7B29E;}
+  .sim-stat--highlight .v{color:var(--teal);font-size:26px;}
+  .sim-chart-card{
+    background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 22px 14px;
+  }
+  .sim-compare-card{
+    background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px 24px;
+  }
+  .sim-compare-sub{font-size:12.5px;color:var(--ink-soft);margin:0 0 16px;}
+  .sim-compare-row{
+    display:grid;grid-template-columns:120px 1fr 90px;align-items:center;gap:12px;
+    padding:9px 0;
+  }
+  .sim-compare-row.active .sim-compare-name{color:var(--teal);font-weight:700;}
+  .sim-compare-name{font-size:13px;color:var(--ink);}
+  .sim-compare-track{height:9px;background:var(--paper-2);border-radius:999px;overflow:hidden;}
+  .sim-compare-fill{height:100%;border-radius:999px;background:var(--ink-soft);}
+  .sim-compare-row.active .sim-compare-fill{background:var(--teal);}
+  .sim-compare-val{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:13px;text-align:right;}
+  @media (max-width:800px){
+    .sim-wrap{grid-template-columns:1fr;}
+  }
+
+  .compare-wrap{padding:0 0 56px;}
+  .compare-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));gap:14px;}
+  .compare-card{
+    background:#fff;border:1px solid var(--line);border-radius:14px;
+    padding:22px 18px;text-align:center;
+  }
+  .compare-icon{font-size:26px;display:block;margin-bottom:10px;}
+  .compare-count{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:26px;color:var(--teal);margin:0 0 4px;}
+  .compare-label{font-size:13px;color:var(--ink);margin:0 0 4px;}
+  .compare-price{font-size:11px;color:var(--ink-soft);margin:0;}
+
   .receipt{
     width:290px;background:#fff;
     box-shadow:0 1px 0 var(--line);
@@ -438,6 +519,9 @@
   }
   .field input:focus, .field select:focus, .tab:focus-visible, button:focus-visible{
     outline:2px solid var(--teal);outline-offset:1px;
+  }
+  .currency-note{
+    font-size:11.5px;color:var(--ink-soft);margin:6px 0 0;line-height:1.4;
   }
   .prefix{font-size:14px;color:var(--ink-soft);}
 
@@ -555,6 +639,95 @@
   .dash-badge:last-child{border-bottom:none;}
   .dash-badge-icon{font-size:16px;flex:none;}
   .dash-badge b{color:var(--teal);}
+
+  .dash-pie-wrap{display:flex;align-items:center;gap:28px;}
+  .dash-pie-legend{display:flex;flex-direction:column;gap:8px;flex:1;}
+  .dash-pie-row{display:flex;align-items:center;gap:8px;font-size:13px;}
+  .dash-pie-swatch{width:10px;height:10px;border-radius:3px;flex:none;}
+  .dash-pie-row .name{color:var(--ink);flex:1;}
+  .dash-pie-row .amt{font-weight:700;color:var(--ink-soft);}
+  @media (max-width:600px){
+    .dash-pie-wrap{flex-direction:column;align-items:flex-start;}
+  }
+
+  .quiz-wrap{max-width:640px;margin:0 auto 40px;}
+  .quiz-progress{margin-bottom:20px;}
+  .quiz-progress-track{height:8px;background:var(--paper-2);border-radius:999px;overflow:hidden;border:1px solid var(--line);}
+  .quiz-progress-fill{height:100%;background:var(--teal);border-radius:999px;transition:width 0.3s ease;}
+  .quiz-progress-label{
+    font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--ink-soft);
+    text-transform:uppercase;letter-spacing:0.03em;margin:8px 0 0;text-align:center;
+  }
+  .quiz-card{
+    background:#fff;border:1px solid var(--line);border-radius:16px;padding:32px 28px;
+  }
+  .quiz-question{
+    font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:19px;
+    text-align:center;margin:0 0 24px;line-height:1.4;
+  }
+  .quiz-options{display:flex;flex-direction:column;gap:10px;}
+  .quiz-option{
+    display:block;width:100%;text-align:left;background:var(--paper);border:1.5px solid var(--line);
+    border-radius:10px;padding:14px 18px;font-size:14px;color:var(--ink);cursor:pointer;
+    font-family:'Inter',sans-serif;transition:border-color 0.15s ease,background 0.15s ease;
+  }
+  .quiz-option:hover{border-color:var(--teal);background:#fff;}
+
+  .score-ring-wrap{position:relative;width:200px;height:200px;margin:0 auto 20px;}
+  .score-ring{width:200px;height:200px;transform:rotate(-90deg);}
+  .score-ring-track{fill:none;stroke:var(--paper-2);stroke-width:14;}
+  .score-ring-fill{
+    fill:none;stroke:var(--teal);stroke-width:14;stroke-linecap:round;
+    stroke-dasharray:552.9;stroke-dashoffset:552.9;transition:stroke-dashoffset 0.8s ease;
+  }
+  .score-ring-center{
+    position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  }
+  .score-num{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:44px;margin:0;line-height:1;}
+  .score-out-of{font-size:12px;color:var(--ink-soft);margin:2px 0 0;}
+  .score-verdict{
+    text-align:center;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;
+    margin:0 0 28px;
+  }
+  .personality-card{
+    background:var(--paper-2);border:1px solid var(--line);border-radius:16px;
+    padding:26px 28px;text-align:center;margin-bottom:24px;
+  }
+  .personality-eyebrow{
+    font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--teal);
+    text-transform:uppercase;letter-spacing:0.05em;margin:0 0 8px;
+  }
+  .personality-name{
+    font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:26px;margin:0 0 6px;
+  }
+  .personality-tagline{
+    font-style:italic;color:var(--ink-soft);font-size:14px;margin:0 0 14px;
+  }
+  .personality-desc{
+    font-size:14px;color:var(--ink);line-height:1.7;max-width:56ch;margin:0 auto;text-align:left;
+  }
+  .score-breakdown{display:flex;flex-direction:column;gap:12px;margin-bottom:24px;}
+  .score-cat-row{
+    background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;
+  }
+  .score-cat-top{display:flex;justify-content:space-between;margin-bottom:8px;font-size:13.5px;}
+  .score-cat-name{font-weight:600;}
+  .score-cat-tag{
+    font-family:'IBM Plex Mono',monospace;font-size:10.5px;text-transform:uppercase;
+    letter-spacing:0.03em;padding:2px 8px;border-radius:999px;
+  }
+  .score-cat-tag.strength{background:#E4F5E9;color:#1F7A3D;}
+  .score-cat-tag.okay{background:var(--amber-soft);color:var(--amber);}
+  .score-cat-tag.weak{background:#FBEAE7;color:var(--red);}
+  .score-cat-track{height:6px;background:var(--paper-2);border-radius:999px;overflow:hidden;}
+  .score-cat-fill{height:100%;border-radius:999px;background:var(--teal);}
+  .score-savings-card{
+    background:var(--ink);color:#F5EFE0;border-radius:14px;padding:22px 24px;
+  }
+  .score-savings-card .dash-extra-title{color:#F5EFE0;}
+  .score-savings-card p:last-child{font-size:14.5px;line-height:1.6;margin:0;}
+  .score-savings-card strong{color:var(--teal);}
+
   @media (max-width:700px){
     .dash-extra-grid{grid-template-columns:1fr;}
   }
@@ -784,6 +957,8 @@
     <button class="app-nav-link" onclick="showPage('track-habit')">Track Habit</button>
     <button class="app-nav-link" onclick="showPage('goals')">Goals</button>
     <button class="app-nav-link" onclick="showPage('insights')">Insights</button>
+    <button class="app-nav-link" onclick="showPage('habitscore')">Habit Score</button>
+    <button class="app-nav-link" onclick="showPage('simulator')">Wealth Simulator</button>
   </div>
 </nav>
 
@@ -835,27 +1010,6 @@
     </div>
   </section>
 
-  <section class="future-wrap">
-    <div class="info-head">
-      <p class="card-h" style="margin:0 0 4px;">What this could become</p>
-      <p class="card-sub" style="margin:0;max-width:60ch;">The same money, looked at a few different ways.</p>
-    </div>
-
-    <div class="future-grid">
-      <div class="future-card">
-        <p class="future-card-title">If you invested it instead</p>
-        <p class="future-card-sub">Assuming a modest 6% average annual return.</p>
-        <div class="future-rows" id="investRows"></div>
-      </div>
-
-      <div class="future-card">
-        <p class="future-card-title">What else it could be</p>
-        <p class="future-card-sub">Rough, illustrative comparisons — not exact prices.</p>
-        <div class="future-rows" id="bucketRows"></div>
-      </div>
-    </div>
-  </section>
-
   <section class="calc" id="calc">
     <div class="calc-card">
       <div>
@@ -864,7 +1018,7 @@
 
         <div class="field">
           <label id="currencyLabel" for="currency">Currency</label>
-          <select id="currency">
+          <select id="currency" onchange="onCurrencyChange()">
             <option value="USD" selected>USD — US Dollar ($)</option>
             <option value="GBP">GBP — British Pound (£)</option>
             <option value="EUR">EUR — Euro (€)</option>
@@ -878,6 +1032,7 @@
             <option value="BRL">BRL — Brazilian Real (R$)</option>
             <option value="MXN">MXN — Mexican Peso (MX$)</option>
           </select>
+          <p class="currency-note">Your price converts automatically using fixed exchange rates — real rates move daily, so treat this as approximate.</p>
         </div>
 
         <div class="tabs" role="tablist" aria-label="Habit type">
@@ -924,6 +1079,48 @@
       </div>
     </div>
   </section>
+
+  <section class="future-wrap">
+    <div class="info-head">
+      <p class="card-h" style="margin:0 0 4px;">What this could become</p>
+      <p class="card-sub" style="margin:0;max-width:60ch;">The same money, looked at a few different ways.</p>
+    </div>
+
+    <div class="future-grid">
+      <div class="future-card">
+        <p class="future-card-title">If you invested it instead</p>
+        <p class="future-card-sub">Assuming a modest 6% average annual return.</p>
+        <div class="future-rows" id="investRows"></div>
+      </div>
+
+      <div class="future-card">
+        <p class="future-card-title">What else it could be</p>
+        <p class="future-card-sub">Rough, illustrative comparisons — not exact prices.</p>
+        <div class="future-rows" id="bucketRows"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="compare-wrap">
+    <div class="info-head">
+      <p class="card-h" style="margin:0 0 4px;" id="compareTitle">What your habit costs you every year</p>
+      <p class="card-sub" style="margin:0;max-width:60ch;">Rough, illustrative comparisons — not exact prices, and not a suggestion to actually make these trades.</p>
+    </div>
+    <div class="compare-grid" id="compareGrid"></div>
+  </section>
+
+  <section class="growth-wrap">
+    <div class="info-head">
+      <p class="card-h" style="margin:0 0 4px;">Your cost, growing over time</p>
+      <p class="card-sub" style="margin:0;max-width:60ch;">A straight line, but it never feels that way day to day.</p>
+    </div>
+    <div class="growth-chart-card">
+      <svg id="growthSvg" viewBox="0 0 640 220" preserveAspectRatio="none" style="width:100%;height:220px;display:block;"></svg>
+      <div class="growth-axis" id="growthAxis"></div>
+    </div>
+  </section>
+
+
 
 
 
@@ -1061,6 +1258,14 @@
     <div class="dash-extra-card">
       <p class="dash-extra-title">Goals progress</p>
       <div id="dashGoalsOverview"></div>
+    </div>
+
+    <div class="dash-extra-card" style="grid-column:1/-1;">
+      <p class="dash-extra-title">Spending by habit</p>
+      <div class="dash-pie-wrap">
+        <svg id="dashPieChart" viewBox="0 0 200 200" style="width:160px;height:160px;flex:none;"></svg>
+        <div class="dash-pie-legend" id="dashPieLegend"></div>
+      </div>
     </div>
   </div>
 
@@ -1464,6 +1669,143 @@
   </footer>
 </div>
 
+<div class="wrap" id="page-habitscore" style="display:none;">
+  <div class="insights-header">
+    <p class="goals-eyebrow">a two-minute check-in</p>
+    <h1 class="goals-title">Habit Score</h1>
+    <p class="goals-sub">Ten quick questions about how your daily habits and money habits line up — answer honestly, there's no wrong answer.</p>
+  </div>
+
+  <div class="quiz-wrap" id="quizView">
+    <div class="quiz-progress">
+      <div class="quiz-progress-track"><div class="quiz-progress-fill" id="quizProgressFill" style="width:10%;"></div></div>
+      <p class="quiz-progress-label" id="quizProgressLabel">Question 1 of 10</p>
+    </div>
+    <div class="quiz-card">
+      <p class="quiz-question" id="quizQuestion"></p>
+      <div class="quiz-options" id="quizOptions"></div>
+    </div>
+  </div>
+
+  <div class="quiz-wrap" id="resultsView" style="display:none;">
+    <div class="score-ring-wrap">
+      <svg viewBox="0 0 200 200" class="score-ring">
+        <circle cx="100" cy="100" r="88" class="score-ring-track"></circle>
+        <circle cx="100" cy="100" r="88" class="score-ring-fill" id="scoreRingFill"></circle>
+      </svg>
+      <div class="score-ring-center">
+        <p class="score-num" id="scoreNum">0</p>
+        <p class="score-out-of">out of 100</p>
+      </div>
+    </div>
+    <p class="score-verdict" id="scoreVerdict"></p>
+
+    <div class="personality-card" id="personalityCard">
+      <p class="personality-eyebrow">Your money personality</p>
+      <p class="personality-name" id="personalityName"></p>
+      <p class="personality-tagline" id="personalityTagline"></p>
+      <p class="personality-desc" id="personalityDesc"></p>
+    </div>
+
+    <div class="score-breakdown" id="scoreBreakdown"></div>
+
+    <div class="score-savings-card">
+      <p class="dash-extra-title">What this could mean for you</p>
+      <p id="scoreSavingsText"></p>
+    </div>
+
+    <div style="text-align:center;margin:24px 0 0;">
+      <button class="track-back-btn" style="border:none;" onclick="restartQuiz()">Retake the quiz</button>
+    </div>
+  </div>
+
+  <div class="track-back-wrap">
+    <a class="track-back-btn" href="#" onclick="showPage('home');return false;">&larr; Back to calculator</a>
+  </div>
+
+  <footer>
+    <p class="foot-note">
+      This is a light-hearted self-check, not a financial assessment — it's meant to prompt reflection, not diagnose anything.
+    </p>
+  </footer>
+</div>
+
+<div class="wrap" id="page-simulator" style="display:none;">
+  <div class="insights-header">
+    <p class="goals-eyebrow">play with the numbers</p>
+    <h1 class="goals-title">Future Wealth Simulator</h1>
+    <p class="goals-sub">Move the sliders and watch how cutting back on a habit — and what you do with the money afterward — changes your future numbers.</p>
+  </div>
+
+  <div class="sim-wrap">
+    <div class="sim-controls">
+      <div class="sim-slider-group">
+        <div class="sim-slider-label"><span>Which habit?</span></div>
+        <select id="simHabit" onchange="onSimHabitChange()">
+          <option value="cig">Smoking</option>
+          <option value="drink">Alcohol</option>
+          <option value="vape">Vaping</option>
+          <option value="fastfood">Fast food / takeaway</option>
+          <option value="sugary">Sugary drinks</option>
+          <option value="coffee">Coffee</option>
+          <option value="subs">Subscriptions</option>
+          <option value="other">Something else…</option>
+        </select>
+        <div id="simHabitOtherField" style="display:none;margin-top:8px;">
+          <input type="text" id="simHabitOther" placeholder="e.g. Lottery tickets" oninput="renderSimulator()" />
+        </div>
+      </div>
+      <div class="sim-slider-group">
+        <div class="sim-slider-label"><span>Daily habit spend</span><span class="sim-slider-val" id="simDailyVal">$0.00</span></div>
+        <input type="range" id="simDaily" min="0" max="50" step="0.5" value="11" oninput="renderSimulator()" />
+      </div>
+      <div class="sim-slider-group">
+        <div class="sim-slider-label"><span>How much would you cut back?</span><span class="sim-slider-val" id="simCutbackVal">50%</span></div>
+        <input type="range" id="simCutback" min="0" max="100" step="5" value="50" oninput="renderSimulator()" />
+      </div>
+      <div class="sim-slider-group">
+        <div class="sim-slider-label"><span>Time horizon</span><span class="sim-slider-val" id="simYearsVal">10 years</span></div>
+        <input type="range" id="simYears" min="1" max="30" step="1" value="10" oninput="renderSimulator()" />
+      </div>
+      <div class="sim-slider-group">
+        <div class="sim-slider-label"><span>Expected annual return, if invested</span><span class="sim-slider-val" id="simRateVal">6%</span></div>
+        <input type="range" id="simRate" min="0" max="12" step="0.5" value="6" oninput="renderSimulator()" />
+      </div>
+      <p class="track-privacy-note" style="margin:6px 0 0;">Returns are never guaranteed — this is a projection, not a promise.</p>
+    </div>
+
+    <div class="sim-results">
+      <p class="sim-habit-label" id="simHabitLabel">Cutting back on smoking</p>
+      <div class="sim-stat-grid">
+        <div class="sim-stat"><p class="l">Freed up per month</p><p class="v" id="simMonthly">$0</p></div>
+        <div class="sim-stat"><p class="l">Total put in over time</p><p class="v" id="simContributed">$0</p></div>
+        <div class="sim-stat"><p class="l">Growth from returns</p><p class="v" id="simGrowth">$0</p></div>
+        <div class="sim-stat sim-stat--highlight"><p class="l">Projected future value</p><p class="v" id="simFuture">$0</p></div>
+      </div>
+      <div class="sim-chart-card">
+        <svg id="simChartSvg" viewBox="0 0 640 220" preserveAspectRatio="none" style="width:100%;height:220px;display:block;"></svg>
+        <div class="growth-axis" id="simAxis"></div>
+      </div>
+
+      <div class="sim-compare-card">
+        <p class="dash-extra-title">How habits compare</p>
+        <p class="sim-compare-sub" id="simCompareSub">Same cutback, time horizon, and return rate — applied to each habit's typical cost.</p>
+        <div id="simCompareRows"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="track-back-wrap">
+    <a class="track-back-btn" href="#" onclick="showPage('home');return false;">&larr; Back to calculator</a>
+  </div>
+
+  <footer>
+    <p class="foot-note">
+      Illustrative only — assumes a steady monthly contribution and a constant rate of return, which real investing rarely delivers exactly. Not financial advice.
+    </p>
+  </footer>
+</div>
+
 
 <script>
   const presets = {
@@ -1489,9 +1831,40 @@
     BRL: { symbol: "R$",  locale: "pt-BR" },
     MXN: { symbol: "MX$", locale: "es-MX" }
   };
+  // Fixed exchange rates (value of 1 unit in USD terms), set at one point in time.
+  // Real exchange rates move daily — treat conversions using this table as approximate.
+  const exchangeRateToUSD = {
+    USD: 1,
+    GBP: 1.333333,
+    EUR: 1.139601,
+    CAD: 0.712251,
+    AUD: 0.698285,
+    NZD: 0.577095,
+    JPY: 0.006126,
+    INR: 0.010382,
+    CHF: 1.221460,
+    ZAR: 0.059381,
+    BRL: 0.197936,
+    MXN: 0.057707
+  };
+  let previousCurrency = 'USD';
   let habit = 'cig';
   const habitTabIds = { cig:'tabCig', drink:'tabDrink', vape:'tabVape', fastfood:'tabFastfood', sugary:'tabSugary', coffee:'tabCoffee', subs:'tabSubs' };
 
+  function onCurrencyChange(){
+    // Convert the existing price using our fixed rate table, so the number stays
+    // meaningful instead of silently keeping the same digits under a new symbol.
+    const priceInput = document.getElementById('price');
+    const newCurrency = document.getElementById('currency').value;
+    const oldValue = parseFloat(priceInput.value);
+    if(!isNaN(oldValue) && oldValue > 0){
+      const usdValue = oldValue * exchangeRateToUSD[previousCurrency];
+      const converted = usdValue / exchangeRateToUSD[newCurrency];
+      priceInput.value = converted < 10 ? converted.toFixed(2) : Math.round(converted);
+    }
+    previousCurrency = newCurrency;
+    calc();
+  }
   function setHabit(h){
     habit = h;
     Object.keys(habitTabIds).forEach(key => {
@@ -1570,6 +1943,8 @@
     window.currentMonthly = monthly;
     window.currentYearly = yearly;
     if (typeof renderFutureSection === 'function') renderFutureSection();
+    if (typeof renderGrowthChart === 'function') renderGrowthChart();
+    if (typeof renderCompareSection === 'function') renderCompareSection();
   }
 
   document.getElementById('qty').addEventListener('input', calc);
@@ -1588,6 +1963,10 @@
     document.getElementById('page-track-habit').style.display = page === 'track-habit' ? '' : 'none';
     document.getElementById('page-goals').style.display = page === 'goals' ? '' : 'none';
     document.getElementById('page-insights').style.display = page === 'insights' ? '' : 'none';
+    document.getElementById('page-habitscore').style.display = page === 'habitscore' ? '' : 'none';
+    document.getElementById('page-simulator').style.display = page === 'simulator' ? '' : 'none';
+    if(page === 'habitscore' && typeof initQuiz === 'function') initQuiz();
+    if(page === 'simulator' && typeof initSimulator === 'function') initSimulator();
     if(page === 'track-habit' && typeof renderLog === 'function') renderLog();
     if(page === 'goals' && typeof renderGoals === 'function') renderGoals();
     if(page === 'insights' && typeof renderYourInsight === 'function') renderYourInsight();
@@ -1596,6 +1975,7 @@
     if(page === 'dashboard' && typeof renderDashGoalsOverview === 'function') renderDashGoalsOverview();
     if(page === 'dashboard' && typeof renderDashThisMonth === 'function') renderDashThisMonth();
     if(page === 'dashboard' && typeof renderDashMilestones === 'function') renderDashMilestones();
+    if(page === 'dashboard' && typeof renderDashPieChart === 'function') renderDashPieChart();
     window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
     if(anchorId){
       setTimeout(() => goToSection(anchorId), 50);
@@ -1845,6 +2225,57 @@
     ).join('') + '</div>';
   }
 
+  function renderDashPieChart(){
+    const svg = document.getElementById('dashPieChart');
+    const legend = document.getElementById('dashPieLegend');
+    if(!svg || !legend) return;
+    const log = getLog();
+
+    if(log.length === 0){
+      svg.innerHTML = '';
+      legend.innerHTML = '<p class="dash-extra-empty">Log a few entries on Track Habit to see this breakdown.</p>';
+      return;
+    }
+
+    const byHabit = {};
+    log.forEach(e => {
+      const key = e.habit || 'Other';
+      byHabit[key] = (byHabit[key] || 0) + e.amount;
+    });
+    const entries = Object.keys(byHabit).map(k => ({ name: k, amount: byHabit[k] })).sort((a,b) => b.amount - a.amount);
+    const total = entries.reduce((s,e) => s + e.amount, 0);
+    const colors = ['#c9b60f', '#1C1B18', '#B8791C', '#B23A2F', '#5C594F', '#7A5C3E', '#3E5C7A'];
+
+    function polarToCartesian(cx, cy, r, angleDeg){
+      const rad = (angleDeg - 90) * Math.PI / 180;
+      return { x: cx + r * Math.cos(rad), y: cy + r * Math.sin(rad) };
+    }
+    function describeSlice(cx, cy, r, startAngle, endAngle){
+      if(endAngle - startAngle >= 359.99){
+        return 'M' + (cx - r) + ',' + cy + ' A' + r + ',' + r + ' 0 1 0 ' + (cx + r) + ',' + cy + ' A' + r + ',' + r + ' 0 1 0 ' + (cx - r) + ',' + cy + ' Z';
+      }
+      const start = polarToCartesian(cx, cy, r, endAngle);
+      const end = polarToCartesian(cx, cy, r, startAngle);
+      const largeArcFlag = endAngle - startAngle <= 180 ? '0' : '1';
+      return ['M', cx, cy, 'L', start.x.toFixed(2), start.y.toFixed(2), 'A', r, r, 0, largeArcFlag, 0, end.x.toFixed(2), end.y.toFixed(2), 'Z'].join(' ');
+    }
+
+    let angle = 0;
+    const cx = 100, cy = 100, r = 90;
+    let slices = '';
+    entries.forEach((e, i) => {
+      const sliceAngle = total > 0 ? (e.amount / total) * 360 : 0;
+      slices += '<path d="' + describeSlice(cx, cy, r, angle, angle + sliceAngle) + '" fill="' + colors[i % colors.length] + '"></path>';
+      angle += sliceAngle;
+    });
+    svg.innerHTML = slices;
+
+    legend.innerHTML = entries.map((e, i) => {
+      const pct = total > 0 ? Math.round((e.amount / total) * 100) : 0;
+      return '<div class="dash-pie-row"><span class="dash-pie-swatch" style="background:' + colors[i % colors.length] + ';"></span><span class="name">' + e.name + '</span><span class="amt">' + money(e.amount) + ' (' + pct + '%)</span></div>';
+    }).join('');
+  }
+
   function renderDashRecentActivity(){
     const box = document.getElementById('dashRecentActivity');
     if(!box) return;
@@ -1877,6 +2308,84 @@
       return '<div class="dash-goal-row">' +
         '<div class="top"><span class="name">' + g.name + '</span><span class="pct">' + pct.toFixed(0) + '%</span></div>' +
         '<div class="dash-goal-track"><div class="dash-goal-fill" style="width:' + pct.toFixed(0) + '%"></div></div>' +
+      '</div>';
+    }).join('');
+  }
+
+  function renderGrowthChart(){
+    const svg = document.getElementById('growthSvg');
+    const axis = document.getElementById('growthAxis');
+    if(!svg || !axis) return;
+    const yearly = window.currentYearly || 0;
+    const W = 640, H = 220, pad = 10;
+
+    if(yearly <= 0){
+      svg.innerHTML = '<text x="' + (W/2) + '" y="' + (H/2) + '" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="13" fill="#B0AA98">Enter your habit above to see this chart fill in.</text>';
+      axis.innerHTML = '';
+      return;
+    }
+
+    const years = 10;
+    const points = [];
+    for(let y = 0; y <= years; y++){
+      const x = pad + (y / years) * (W - pad * 2);
+      const value = yearly * y;
+      points.push({ x, value });
+    }
+    const maxValue = yearly * years || 1;
+    const toY = (v) => H - pad - (v / maxValue) * (H - pad * 2);
+
+    const linePath = points.map((p, i) => (i === 0 ? 'M' : 'L') + p.x.toFixed(1) + ',' + toY(p.value).toFixed(1)).join(' ');
+    const areaPath = linePath + ' L' + points[points.length - 1].x.toFixed(1) + ',' + (H - pad) + ' L' + points[0].x.toFixed(1) + ',' + (H - pad) + ' Z';
+
+    svg.innerHTML =
+      '<defs><linearGradient id="growthFill" x1="0" y1="0" x2="0" y2="1">' +
+        '<stop offset="0%" stop-color="#c9b60f" stop-opacity="0.35"/>' +
+        '<stop offset="100%" stop-color="#c9b60f" stop-opacity="0.02"/>' +
+      '</linearGradient></defs>' +
+      '<path d="' + areaPath + '" fill="url(#growthFill)" stroke="none"></path>' +
+      '<path d="' + linePath + '" fill="none" stroke="#c9b60f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>' +
+      '<circle cx="' + points[points.length-1].x.toFixed(1) + '" cy="' + toY(points[points.length-1].value).toFixed(1) + '" r="4.5" fill="#c9b60f"></circle>';
+
+    axis.innerHTML = '<span>Today</span><span>' + moneyRound(yearly * 5) + ' by year 5</span><span>' + moneyRound(yearly * 10) + ' by year 10</span>';
+  }
+
+  function renderCompareSection(){
+    const grid = document.getElementById('compareGrid');
+    const title = document.getElementById('compareTitle');
+    if(!grid || !title) return;
+    const yearly = window.currentYearly || 0;
+    const habitLabel = presets[habit] ? presets[habit].sub.split(' ·')[0] : 'habit';
+
+    if(yearly <= 0){
+      title.textContent = 'What your habit costs you every year';
+      grid.innerHTML = '<p class="dash-extra-empty">Enter your habit above to see this filled in.</p>';
+      return;
+    }
+
+    title.innerHTML = 'Your ' + habitLabel.toLowerCase() + ' habit costs ' + moneyRound(yearly) + ' a year — that could buy:';
+
+    const items = [
+      { icon: '🎟️', label: 'Concert tickets', price: 120 },
+      { icon: '👟', label: 'Pairs of sneakers', price: 120 },
+      { icon: '🍽️', label: 'Restaurant dinners', price: 60 },
+      { icon: '✈️', label: 'Domestic flights', price: 300 },
+      { icon: '🎮', label: 'Games consoles', price: 500 },
+      { icon: '🚲', label: 'Bicycles', price: 400 },
+      { icon: '⌚', label: 'Smartwatches', price: 350 },
+      { icon: '🤖', label: 'Android phones', price: 600 },
+      { icon: '📱', label: 'iPhones', price: 999 },
+      { icon: '💻', label: 'Laptops', price: 1000 },
+      { icon: '🏖️', label: 'Holidays abroad', price: 1500 }
+    ];
+    grid.innerHTML = items.map(item => {
+      const count = yearly / item.price;
+      const countStr = count >= 10 ? Math.round(count) : count.toFixed(1);
+      return '<div class="compare-card">' +
+        '<span class="compare-icon">' + item.icon + '</span>' +
+        '<p class="compare-count">' + countStr + '</p>' +
+        '<p class="compare-label">' + item.label + '</p>' +
+        '<p class="compare-price">~' + money(item.price) + ' each</p>' +
       '</div>';
     }).join('');
   }
@@ -1982,6 +2491,318 @@
         '<p class="snapshot-value">' + topHabit + '</p>' +
         '<p class="snapshot-sub">' + (topAmount > 0 ? money(topAmount) + ' recorded' : 'Record an entry on Track Habit') + '</p>' +
       '</div>';
+  }
+
+  // --- Habit Score quiz ---
+  const quizQuestions = [
+    { category: 'Spending Awareness', question: 'How often do you think about what you spend on habits like smoking, drinking, coffee, or subscriptions?',
+      options: [
+        { text: 'Never really think about it', points: 0 },
+        { text: 'Occasionally', points: 3 },
+        { text: 'Fairly often', points: 7 },
+        { text: 'I track it closely', points: 10 }
+      ] },
+    { category: 'Spending Awareness', question: 'If someone asked what your habit costs you per week, could you answer?',
+      options: [
+        { text: 'No idea', points: 0 },
+        { text: 'A rough guess', points: 3 },
+        { text: 'Pretty close', points: 7 },
+        { text: 'An exact number', points: 10 }
+      ] },
+    { category: 'Spending Awareness', question: 'Have you ever added up what a habit costs you over a full year?',
+      options: [
+        { text: 'Never', points: 0 },
+        { text: "Thought about it, never did it", points: 3 },
+        { text: 'Estimated it once', points: 7 },
+        { text: 'Yes, and the number surprised me', points: 10 }
+      ] },
+    { category: 'Habit Control', question: 'How easy would it be for you to skip your habit for a full week?',
+      options: [
+        { text: 'Very hard', points: 0 },
+        { text: 'Somewhat hard', points: 3 },
+        { text: 'Fairly easy', points: 7 },
+        { text: 'No problem at all', points: 10 }
+      ] },
+    { category: 'Habit Control', question: 'Do you ever end up spending more on it than you meant to?',
+      options: [
+        { text: 'Often', points: 0 },
+        { text: 'Sometimes', points: 3 },
+        { text: 'Rarely', points: 7 },
+        { text: 'Never', points: 10 }
+      ] },
+    { category: 'Habit Control', question: 'If the price of your habit doubled overnight, what would you actually do?',
+      options: [
+        { text: 'Keep buying it anyway', points: 0 },
+        { text: 'Grumble, but keep going', points: 3 },
+        { text: 'Cut back significantly', points: 7 },
+        { text: 'Quit or switch right away', points: 10 }
+      ] },
+    { category: 'Saving & Investing', question: 'Do you have any money automatically set aside each month?',
+      options: [
+        { text: 'No', points: 0 },
+        { text: 'A little, inconsistently', points: 3 },
+        { text: 'Yes, a fixed small amount', points: 7 },
+        { text: 'Yes, a meaningful percentage', points: 10 }
+      ] },
+    { category: 'Saving & Investing', question: 'If you freed up the money you spend on this habit, what would happen to it?',
+      options: [
+        { text: "Honestly, I haven't thought about it", points: 0 },
+        { text: "I'd probably just spend it elsewhere", points: 3 },
+        { text: "I'd save some, spend some", points: 7 },
+        { text: "I'd save or invest all of it", points: 10 }
+      ] },
+    { category: 'Future Planning', question: 'How often do you think about your finances 5–10 years from now?',
+      options: [
+        { text: 'Rarely', points: 0 },
+        { text: 'Sometimes', points: 3 },
+        { text: 'Fairly often', points: 7 },
+        { text: 'Regularly', points: 10 }
+      ] },
+    { category: 'Future Planning', question: 'Do you have a specific savings goal right now?',
+      options: [
+        { text: 'No', points: 0 },
+        { text: 'A vague idea', points: 3 },
+        { text: 'Yes, but no real plan', points: 7 },
+        { text: 'Yes, with an actual plan', points: 10 }
+      ] }
+  ];
+  let quizIndex = 0;
+  let quizAnswers = [];
+
+  function initQuiz(){
+    quizIndex = 0;
+    quizAnswers = [];
+    document.getElementById('quizView').style.display = '';
+    document.getElementById('resultsView').style.display = 'none';
+    renderQuizQuestion();
+  }
+  function renderQuizQuestion(){
+    const q = quizQuestions[quizIndex];
+    document.getElementById('quizProgressFill').style.width = (((quizIndex + 1) / quizQuestions.length) * 100) + '%';
+    document.getElementById('quizProgressLabel').textContent = 'Question ' + (quizIndex + 1) + ' of ' + quizQuestions.length;
+    document.getElementById('quizQuestion').textContent = q.question;
+    document.getElementById('quizOptions').innerHTML = q.options.map((opt, i) =>
+      '<button class="quiz-option" onclick="selectQuizOption(' + i + ')">' + opt.text + '</button>'
+    ).join('');
+  }
+  function selectQuizOption(optionIndex){
+    const q = quizQuestions[quizIndex];
+    quizAnswers.push({ category: q.category, points: q.options[optionIndex].points });
+    quizIndex++;
+    if(quizIndex < quizQuestions.length){
+      renderQuizQuestion();
+    } else {
+      showQuizResults();
+    }
+  }
+  function restartQuiz(){
+    initQuiz();
+  }
+  function showQuizResults(){
+    document.getElementById('quizView').style.display = 'none';
+    document.getElementById('resultsView').style.display = '';
+
+    const totalScore = quizAnswers.reduce((s, a) => s + a.points, 0);
+    const maxScore = quizQuestions.length * 10;
+    const pct = totalScore / maxScore;
+
+    document.getElementById('scoreNum').textContent = totalScore;
+    const circumference = 552.9;
+    const ring = document.getElementById('scoreRingFill');
+    ring.style.strokeDashoffset = (circumference * (1 - pct)).toFixed(1);
+    if(pct >= 0.75) ring.style.stroke = '#1F7A3D';
+    else if(pct >= 0.45) ring.style.stroke = 'var(--teal)';
+    else ring.style.stroke = 'var(--red)';
+
+    let verdict;
+    if(pct >= 0.8) verdict = "You're in strong control of this habit and its cost.";
+    else if(pct >= 0.6) verdict = "You're doing reasonably well, with room to tighten things up.";
+    else if(pct >= 0.4) verdict = "There's a real gap between this habit and your financial goals.";
+    else verdict = "This habit is likely costing you more than you realize — in money and control.";
+    document.getElementById('scoreVerdict').textContent = verdict;
+
+    const personalities = [
+      { min: 0.85, name: 'The Optimiser', tagline: 'You already treat money like a system, not a feeling.',
+        desc: "You track what things cost, you notice when spending creeps up, and you generally act on that before it becomes a problem. This habit isn't running the show — you are. If there's a next step for you, it's less about awareness and more about making sure the money you're already good at protecting is actually working for you, not just sitting still." },
+      { min: 0.7, name: 'The Strategist', tagline: "You know roughly where your money goes, even if you don't act on every bit of it.",
+        desc: "You've got a decent handle on what this habit costs you, and you're not completely on autopilot. The gap for you tends to be between knowing and doing — you can usually estimate the damage, but turning that awareness into a firm decision doesn't always happen. A little more follow-through would close a lot of the distance here." },
+      { min: 0.5, name: 'The Balancer', tagline: "You're juggling awareness and indulgence, and mostly getting by.",
+        desc: "Some weeks you're on top of it, some weeks the habit wins without much of a fight. You're not in denial about the cost, but you're not fully in control of it either — it tends to depend on mood, stress, or whatever else is going on. That's an honest, common place to be, and it's also the place where a little more structure pays off fastest." },
+      { min: 0.3, name: 'The Drifter', tagline: 'Your habit is quietly setting the pace, not you.',
+        desc: "The real cost of this habit has probably surprised you before, because it's not something you check often. It's not that you don't care about money — it's that this particular habit sits in a blind spot, running in the background while your attention is elsewhere. Just the act of tracking it, like you're doing right now, tends to be the biggest single shift for people in this spot." },
+      { min: 0, name: 'The Autopilot', tagline: 'Right now, this habit is running on its own schedule, not yours.',
+        desc: "This isn't really a choice you're actively making each time — it's closer to something that just happens. That's not a character flaw, it's just how habits work once they're deeply wired in. The good news is that awareness is usually the hardest part to build, and you've just done it by finishing this quiz. What you do with that awareness next is entirely up to you." }
+    ];
+    const personality = personalities.find(p => pct >= p.min) || personalities[personalities.length - 1];
+    document.getElementById('personalityName').textContent = personality.name;
+    document.getElementById('personalityTagline').textContent = personality.tagline;
+    document.getElementById('personalityDesc').textContent = personality.desc;
+
+    const categoryMax = {};
+    const categoryScore = {};
+    quizQuestions.forEach(q => { categoryMax[q.category] = (categoryMax[q.category] || 0) + 10; });
+    quizAnswers.forEach(a => { categoryScore[a.category] = (categoryScore[a.category] || 0) + a.points; });
+
+    const categories = Object.keys(categoryMax);
+    document.getElementById('scoreBreakdown').innerHTML = categories.map(cat => {
+      const score = categoryScore[cat] || 0;
+      const max = categoryMax[cat];
+      const catPct = score / max;
+      let tag, tagClass;
+      if(catPct >= 0.7){ tag = 'Strength'; tagClass = 'strength'; }
+      else if(catPct >= 0.4){ tag = 'Doing okay'; tagClass = 'okay'; }
+      else { tag = 'Weak area'; tagClass = 'weak'; }
+      return '<div class="score-cat-row">' +
+        '<div class="score-cat-top"><span class="score-cat-name">' + cat + '</span><span class="score-cat-tag ' + tagClass + '">' + tag + '</span></div>' +
+        '<div class="score-cat-track"><div class="score-cat-fill" style="width:' + (catPct * 100).toFixed(0) + '%;"></div></div>' +
+      '</div>';
+    }).join('');
+
+    const yearly = window.currentYearly || 0;
+    const habitLabel = presets[habit] ? presets[habit].sub.split(' ·')[0].toLowerCase() : 'habit';
+    const savingsBox = document.getElementById('scoreSavingsText');
+    if(yearly > 0){
+      savingsBox.innerHTML = 'Based on what you entered on the calculator, reducing spending on your ' + habitLabel + ' habit could save you about <strong>' + moneyRound(yearly) + ' a year</strong>. Even cutting it back by half would put roughly <strong>' + moneyRound(yearly/2) + '</strong> back in your pocket annually.';
+    } else {
+      savingsBox.innerHTML = 'Enter your habit on the calculator to see exactly how much cutting back could save you each year.';
+    }
+  }
+
+  // --- Future Wealth Simulator ---
+  function initSimulator(){
+    const dailyInput = document.getElementById('simDaily');
+    const habitSelect = document.getElementById('simHabit');
+    if(presets[habit]) habitSelect.value = habit;
+    if(window.currentDaily && window.currentDaily > 0){
+      dailyInput.value = Math.min(50, window.currentDaily).toFixed(1);
+    } else if(presets[habitSelect.value]){
+      const p = presets[habitSelect.value];
+      dailyInput.value = Math.min(50, (p.qty * p.price) / 7).toFixed(1);
+    }
+    document.getElementById('simHabitOtherField').style.display = habitSelect.value === 'other' ? 'block' : 'none';
+    renderSimulator();
+  }
+  function onSimHabitChange(){
+    const habitSelect = document.getElementById('simHabit');
+    const dailyInput = document.getElementById('simDaily');
+    document.getElementById('simHabitOtherField').style.display = habitSelect.value === 'other' ? 'block' : 'none';
+    if(presets[habitSelect.value]){
+      const p = presets[habitSelect.value];
+      dailyInput.value = Math.min(50, (p.qty * p.price) / 7).toFixed(1);
+    }
+    renderSimulator();
+  }
+  function renderSimulator(){
+    const daily = parseFloat(document.getElementById('simDaily').value) || 0;
+    const cutback = parseFloat(document.getElementById('simCutback').value) || 0;
+    const years = parseInt(document.getElementById('simYears').value) || 1;
+    const rate = parseFloat(document.getElementById('simRate').value) || 0;
+
+    const habitSelect = document.getElementById('simHabit');
+    let simHabitName;
+    if(habitSelect.value === 'other'){
+      simHabitName = document.getElementById('simHabitOther').value.trim() || 'your habit';
+    } else {
+      simHabitName = (trackHabitLabels[habitSelect.value] || 'your habit').toLowerCase();
+    }
+    document.getElementById('simHabitLabel').textContent = 'Cutting back on ' + simHabitName;
+
+    document.getElementById('simDailyVal').textContent = money(daily);
+    document.getElementById('simCutbackVal').textContent = cutback + '%';
+    document.getElementById('simYearsVal').textContent = years + (years === 1 ? ' year' : ' years');
+    document.getElementById('simRateVal').textContent = rate + '%';
+
+    const monthlyContribution = daily * (cutback / 100) * 30.44;
+    document.getElementById('simMonthly').textContent = moneyRound(monthlyContribution);
+
+    const months = years * 12;
+    const monthlyRate = (rate / 100) / 12;
+    const totalContributed = monthlyContribution * months;
+
+    let futureValue;
+    if(monthlyRate === 0){
+      futureValue = totalContributed;
+    } else {
+      futureValue = monthlyContribution * ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate);
+    }
+    const growth = Math.max(0, futureValue - totalContributed);
+
+    document.getElementById('simContributed').textContent = moneyRound(totalContributed);
+    document.getElementById('simGrowth').textContent = moneyRound(growth);
+    document.getElementById('simFuture').textContent = moneyRound(futureValue);
+
+    // Chart: yearly balance points
+    const svg = document.getElementById('simChartSvg');
+    const axis = document.getElementById('simAxis');
+    const W = 640, H = 220, pad = 10;
+
+    if(monthlyContribution <= 0){
+      svg.innerHTML = '<text x="' + (W/2) + '" y="' + (H/2) + '" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="13" fill="#B0AA98">Move the sliders to see your projection.</text>';
+      axis.innerHTML = '';
+      renderSimCompare(habitSelect.value, years, rate, cutback);
+      return;
+    }
+
+    const points = [];
+    for(let y = 0; y <= years; y++){
+      const m = y * 12;
+      let val;
+      if(monthlyRate === 0){
+        val = monthlyContribution * m;
+      } else {
+        val = monthlyContribution * ((Math.pow(1 + monthlyRate, m) - 1) / monthlyRate);
+      }
+      const x = pad + (y / years) * (W - pad * 2);
+      points.push({ x, value: val });
+    }
+    const maxValue = points[points.length - 1].value || 1;
+    const toY = (v) => H - pad - (v / maxValue) * (H - pad * 2);
+
+    const linePath = points.map((p, i) => (i === 0 ? 'M' : 'L') + p.x.toFixed(1) + ',' + toY(p.value).toFixed(1)).join(' ');
+    const areaPath = linePath + ' L' + points[points.length - 1].x.toFixed(1) + ',' + (H - pad) + ' L' + points[0].x.toFixed(1) + ',' + (H - pad) + ' Z';
+
+    svg.innerHTML =
+      '<defs><linearGradient id="simFill" x1="0" y1="0" x2="0" y2="1">' +
+        '<stop offset="0%" stop-color="#c9b60f" stop-opacity="0.35"/>' +
+        '<stop offset="100%" stop-color="#c9b60f" stop-opacity="0.02"/>' +
+      '</linearGradient></defs>' +
+      '<path d="' + areaPath + '" fill="url(#simFill)" stroke="none"></path>' +
+      '<path d="' + linePath + '" fill="none" stroke="#c9b60f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>' +
+      '<circle cx="' + points[points.length-1].x.toFixed(1) + '" cy="' + toY(points[points.length-1].value).toFixed(1) + '" r="4.5" fill="#c9b60f"></circle>';
+
+    axis.innerHTML = '<span>Today</span><span>Year ' + Math.round(years/2) + '</span><span>Year ' + years + '</span>';
+    renderSimCompare(habitSelect.value, years, rate, cutback);
+  }
+
+  function renderSimCompare(selectedHabit, years, rate, cutback){
+    const box = document.getElementById('simCompareRows');
+    if(!box) return;
+    const months = years * 12;
+    const monthlyRate = (rate / 100) / 12;
+
+    const rows = Object.keys(presets).map(key => {
+      const p = presets[key];
+      const dailyDefault = (p.qty * p.price) / 7;
+      const monthlyContribution = dailyDefault * (cutback / 100) * 30.44;
+      let futureValue;
+      if(monthlyRate === 0){
+        futureValue = monthlyContribution * months;
+      } else {
+        futureValue = monthlyContribution * ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate);
+      }
+      return { key, name: trackHabitLabels[key] || key, value: futureValue };
+    }).sort((a, b) => b.value - a.value);
+
+    const maxValue = rows.length ? rows[0].value : 1;
+    box.innerHTML = rows.map(r => {
+      const pct = maxValue > 0 ? (r.value / maxValue) * 100 : 0;
+      const activeClass = r.key === selectedHabit ? ' active' : '';
+      return '<div class="sim-compare-row' + activeClass + '">' +
+        '<span class="sim-compare-name">' + r.name + '</span>' +
+        '<div class="sim-compare-track"><div class="sim-compare-fill" style="width:' + pct.toFixed(0) + '%;"></div></div>' +
+        '<span class="sim-compare-val">' + moneyRound(r.value) + '</span>' +
+      '</div>';
+    }).join('');
   }
 </script>
 
