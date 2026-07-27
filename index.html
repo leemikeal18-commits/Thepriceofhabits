@@ -267,7 +267,7 @@
   }
   .snapshot-value{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:19px;margin:0 0 4px;}
   .snapshot-sub{font-size:12px;color:var(--ink-soft);margin:0;}
-  @media (max-width:760px){
+  @media (max-width:800px){
     .snapshot-grid{grid-template-columns:1fr 1fr;}
   }
 
@@ -366,6 +366,17 @@
   .hero-stat .n{font-size:22px;font-weight:600;display:block;}
   .hero-stat .l{font-size:12px;color:var(--ink-soft);}
 
+  .purpose-card{
+    background:#fff;border:1px solid var(--line);border-radius:14px;
+    padding:18px 20px;margin-bottom:16px;
+  }
+  .purpose-badge{
+    font-family:'Fraunces',serif;font-style:italic;font-weight:600;font-size:15px;
+    color:var(--teal);letter-spacing:0.01em;margin:0 0 10px;
+    display:flex;align-items:center;gap:8px;
+  }
+  .purpose-badge::before{content:'';width:18px;height:1.5px;background:var(--teal);display:inline-block;}
+  .purpose-text{font-size:13.5px;color:var(--ink-soft);line-height:1.65;margin:0;}
   .receipt-wrap{
     background:var(--paper-2);
     padding:26px 8px 0;
@@ -879,8 +890,10 @@
   @media (max-width:700px){
     .dash-extra-grid{grid-template-columns:1fr;}
   }
-  @media (max-width:640px){
+  @media (max-width:800px){
     .dash-stats{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:640px){
     .dash-title{font-size:32px;}
   }
 
@@ -1127,6 +1140,11 @@
         <div class="hero-stat"><span class="n" id="heroYear">$0</span><span class="l">per year</span></div>
         <div class="hero-stat"><span class="n" id="heroDecade">$0</span><span class="l">per decade</span></div>
       </div>
+    </div>
+
+    <div class="purpose-card">
+      <p class="purpose-badge">Why this site exists</p>
+      <p class="purpose-text">A daily habit like smoking, drinking, or vaping rarely feels like real money in the moment — it's just a pack, a round, a pod. This site exists to add it up honestly, using nothing more than simple arithmetic on the numbers you already know. There's no judgment here, and no accounts to sign up for — just a clear, private picture of what a habit actually costs over a week, a year, and a decade, so you can weigh it against everything else that money could do. What you decide to do with that number is entirely up to you.</p>
     </div>
 
     <div class="receipt-wrap">
