@@ -52,7 +52,23 @@
     background:radial-gradient(ellipse 1400px 900px at 50% 0%, transparent 55%, rgba(28,27,24,0.05) 100%);
   }
   body > *{position:relative;z-index:1;}
+  html, body{overflow-x:hidden;}
   .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+  @media (max-width:520px){
+    .wrap{padding:0 16px;}
+    .sim-compare-row{grid-template-columns:1fr;gap:4px;text-align:left;}
+    .sim-compare-row .sim-compare-val{text-align:left;}
+    .twin-timeline-row{grid-template-columns:50px 1fr 1fr;gap:6px;font-size:11.5px;}
+    .tl-row{grid-template-columns:1fr;gap:4px;}
+    .dash-timeline-row{grid-template-columns:1fr;gap:4px;}
+    .score-ring-wrap{width:160px;height:160px;}
+    .score-ring{width:160px;height:160px;}
+    .logo{gap:8px;}
+    .logo .mark{height:30px;}
+    .logo-text{font-size:15px;}
+    .goals-title{font-size:34px;}
+    .track-title{font-size:34px;}
+  }
   a{color:var(--teal);}
 
   header.nav{
@@ -2242,6 +2258,9 @@
     window.currentWeekly = weekly;
     window.currentMonthly = monthly;
     window.currentYearly = yearly;
+
+    // Persist the calculator's inputs so a page refresh doesn't lose them.
+    localStorage.setItem('poh_calc_state', JSON.stringify({ habit, qty, price, currency: cur }));
     if (typeof renderFutureSection === 'function') renderFutureSection();
     if (typeof renderGrowthChart === 'function') renderGrowthChart();
     if (typeof renderCompareSection === 'function') renderCompareSection();
@@ -2250,6 +2269,31 @@
   document.getElementById('qty').addEventListener('input', calc);
   document.getElementById('price').addEventListener('input', calc);
   document.getElementById('currency').addEventListener('change', calc);
+
+  function restoreCalcState(){
+    try {
+      const raw = localStorage.getItem('poh_calc_state');
+      if(!raw) return;
+      const saved = JSON.parse(raw);
+      if(!saved || !presets[saved.habit]) return;
+      habit = saved.habit;
+      Object.keys(habitTabIds).forEach(key => {
+        const el = document.getElementById(habitTabIds[key]);
+        el.classList.toggle('active', key === habit);
+        el.setAttribute('aria-selected', key === habit);
+      });
+      const p = presets[habit];
+      document.getElementById('rSub').textContent = p.sub;
+      document.getElementById('qtyLabel').textContent = p.qtyLabel;
+      document.getElementById('priceLabel').textContent = p.priceLabel;
+      document.getElementById('rItemLabel').textContent = p.itemLabel;
+      if(typeof saved.qty === 'number' && saved.qty >= 0) document.getElementById('qty').value = saved.qty;
+      if(typeof saved.price === 'number' && saved.price >= 0) document.getElementById('price').value = saved.price;
+      if(saved.currency && currencies[saved.currency]) document.getElementById('currency').value = saved.currency;
+      previousCurrency = document.getElementById('currency').value;
+    } catch(e){}
+  }
+  restoreCalcState();
   calc();
 
   // --- Account (stored locally in this browser only) ---
@@ -2976,12 +3020,25 @@
   function initSimulator(){
     const dailyInput = document.getElementById('simDaily');
     const habitSelect = document.getElementById('simHabit');
-    if(presets[habit]) habitSelect.value = habit;
-    if(window.currentDaily && window.currentDaily > 0){
-      dailyInput.value = Math.min(50, window.currentDaily).toFixed(1);
-    } else if(presets[habitSelect.value]){
-      const p = presets[habitSelect.value];
-      dailyInput.value = Math.min(50, (p.qty * p.price) / 7).toFixed(1);
+
+    let saved = null;
+    try { saved = JSON.parse(localStorage.getItem('poh_sim_state') || 'null'); } catch(e){}
+
+    if(saved){
+      habitSelect.value = saved.habit || 'cig';
+      dailyInput.value = saved.daily;
+      document.getElementById('simCutback').value = saved.cutback;
+      document.getElementById('simYears').value = saved.years;
+      document.getElementById('simRate').value = saved.rate;
+      if(saved.habit === 'other') document.getElementById('simHabitOther').value = saved.habitOther || '';
+    } else {
+      if(presets[habit]) habitSelect.value = habit;
+      if(window.currentDaily && window.currentDaily > 0){
+        dailyInput.value = Math.min(50, window.currentDaily).toFixed(1);
+      } else if(presets[habitSelect.value]){
+        const p = presets[habitSelect.value];
+        dailyInput.value = Math.min(50, (p.qty * p.price) / 7).toFixed(1);
+      }
     }
     document.getElementById('simHabitOtherField').style.display = habitSelect.value === 'other' ? 'block' : 'none';
     renderSimulator();
@@ -3010,6 +3067,11 @@
       simHabitName = (trackHabitLabels[habitSelect.value] || 'your habit').toLowerCase();
     }
     document.getElementById('simHabitLabel').textContent = 'Cutting back on ' + simHabitName;
+
+    localStorage.setItem('poh_sim_state', JSON.stringify({
+      habit: habitSelect.value, daily, cutback, years, rate,
+      habitOther: habitSelect.value === 'other' ? document.getElementById('simHabitOther').value : ''
+    }));
 
     document.getElementById('simDailyVal').textContent = money(daily);
     document.getElementById('simCutbackVal').textContent = cutback + '%';
@@ -3243,7 +3305,30 @@
   // --- Wealth Twin ---
   function initTwin(){
     const habitInput = document.getElementById('twinHabit');
-    if(window.currentDaily && window.currentDaily > 0){
+    let saved = null;
+    try { saved = JSON.parse(localStorage.getItem('poh_twin_state') || 'null'); } catch(e){}
+
+    if(saved){
+      document.getElementById('twinIncome').value = saved.income;
+      document.getElementById('twinSavings').value = saved.savings;
+      document.getElementById('twinHabit').value = saved.habitSpend;
+      document.getElementById('twinYears').value = saved.years;
+      if(saved.period && saved.period !== twinPeriod){
+        // Apply the saved period's slider ranges without re-triggering a conversion.
+        const range = twinRanges[saved.period];
+        ['twinIncome','twinSavings','twinHabit'].forEach(id => {
+          const el = document.getElementById(id);
+          const r = range[twinFieldKeys[id]];
+          el.min = r.min; el.max = r.max; el.step = r.step;
+        });
+        twinPeriod = saved.period;
+        document.getElementById('twinIncomeLabel').textContent = twinPeriod === 'weekly' ? 'Weekly income' : 'Monthly income';
+        document.getElementById('twinSavingsLabel').textContent = twinPeriod === 'weekly' ? 'Weekly savings right now' : 'Monthly savings right now';
+        document.getElementById('twinHabitLabel').textContent = twinPeriod === 'weekly' ? 'Weekly spend on habits' : 'Monthly spend on habits';
+        document.getElementById('twinPeriodMonthlyBtn').classList.toggle('active', twinPeriod === 'monthly');
+        document.getElementById('twinPeriodWeeklyBtn').classList.toggle('active', twinPeriod === 'weekly');
+      }
+    } else if(window.currentDaily && window.currentDaily > 0){
       const monthlyHabit = window.currentDaily * 30.44;
       habitInput.value = Math.min(1500, Math.round(monthlyHabit));
     }
@@ -3300,6 +3385,10 @@
     document.getElementById('twinSavingsVal').textContent = moneyRound(rawSavings);
     document.getElementById('twinHabitVal').textContent = moneyRound(rawHabit);
     document.getElementById('twinYearsVal').textContent = years + (years === 1 ? ' year' : ' years');
+
+    localStorage.setItem('poh_twin_state', JSON.stringify({
+      income: rawIncome, savings: rawSavings, habitSpend: rawHabit, years, period: twinPeriod
+    }));
 
     const youMonthly = savings;
     const youRate = 1;
