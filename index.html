@@ -54,6 +54,10 @@
   body > *{position:relative;z-index:1;}
   html, body{overflow-x:hidden;}
   .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+  /* Grid and flex items default to a minimum width based on their content, which lets
+     <select> elements with long option text overflow their column — this resets that
+     everywhere so form fields always shrink to fit, most noticeable in Safari/iPadOS. */
+  select, input{min-width:0;box-sizing:border-box;}
   @media (max-width:520px){
     .wrap{padding:0 16px;}
     .sim-compare-row{grid-template-columns:1fr;gap:4px;text-align:left;}
@@ -68,6 +72,9 @@
     .logo-text{font-size:15px;}
     .goals-title{font-size:34px;}
     .track-title{font-size:34px;}
+    .purpose-badge-big{font-size:19px;gap:10px;}
+    .purpose-badge-big::before, .purpose-badge-big::after{width:18px;}
+    .purpose-text-big{font-size:15px;}
   }
   a{color:var(--teal);}
 
@@ -343,8 +350,14 @@
 
   .hero{
     display:grid;grid-template-columns:1.05fr 0.95fr;gap:56px;
+    grid-template-areas:
+      "title receipt"
+      "how    receipt";
     padding:64px 0 40px;align-items:start;
   }
+  .hero-title-block{grid-area:title;}
+  .hero-how-block{grid-area:how;}
+  .hero-receipt-block{grid-area:receipt;}
   .eyebrow{
     font-family:'Fraunces',serif;font-style:italic;font-weight:600;font-size:16px;
     color:var(--teal);letter-spacing:0.01em;margin:0 0 14px;display:flex;align-items:center;gap:10px;
@@ -366,17 +379,19 @@
   .hero-stat .n{font-size:22px;font-weight:600;display:block;}
   .hero-stat .l{font-size:12px;color:var(--ink-soft);}
 
-  .purpose-card{
-    background:#fff;border:1px solid var(--line);border-radius:14px;
-    padding:18px 20px;margin-bottom:16px;
+  .purpose-section{
+    margin:0 0 56px;text-align:center;
   }
-  .purpose-badge{
-    font-family:'Fraunces',serif;font-style:italic;font-weight:600;font-size:15px;
-    color:var(--teal);letter-spacing:0.01em;margin:0 0 10px;
-    display:flex;align-items:center;gap:8px;
+  .purpose-badge-big{
+    font-family:'Fraunces',serif;font-style:italic;font-weight:600;font-size:24px;
+    color:var(--teal);letter-spacing:0.01em;margin:0 0 18px;
+    display:flex;align-items:center;justify-content:center;gap:16px;
   }
-  .purpose-badge::before{content:'';width:18px;height:1.5px;background:var(--teal);display:inline-block;}
-  .purpose-text{font-size:13.5px;color:var(--ink-soft);line-height:1.65;margin:0;}
+  .purpose-badge-big::before, .purpose-badge-big::after{
+    content:'';width:32px;height:1.5px;background:var(--teal);display:inline-block;
+  }
+  .purpose-text-big{font-size:17px;color:var(--ink-soft);line-height:1.75;margin:0 auto;max-width:840px;}
+  .receipt-wrap-lower{margin-top:56px;}
   .receipt-wrap{
     background:var(--paper-2);
     padding:26px 8px 0;
@@ -712,7 +727,15 @@
   .foot-note a{color:var(--ink);}
 
   @media (max-width:860px){
-    .hero{grid-template-columns:1fr;gap:36px;padding-top:40px;}
+    .hero{
+      grid-template-columns:1fr;
+      grid-template-areas:
+        "title"
+        "receipt"
+        "how";
+      gap:36px;padding-top:40px;
+    }
+    .receipt-wrap-lower{margin-top:0;}
     .calc-card{grid-template-columns:1fr;padding:22px;}
     h1{font-size:42px;}
     .grid-4{grid-template-columns:1fr 1fr;}
@@ -911,14 +934,15 @@
   .track-wrap{max-width:640px;margin:0 auto 56px;}
   .track-form{
     background:#fff;border:1px solid var(--line);border-radius:14px;
-    padding:22px;display:grid;grid-template-columns:1fr 1.3fr 1.3fr 1fr auto;gap:12px;align-items:end;margin-bottom:24px;
+    padding:22px;display:grid;grid-template-columns:1fr 1.3fr 1.3fr 1fr auto;gap:28px;align-items:end;margin-bottom:24px;
   }
+  .track-field{min-width:0;}
   .track-field label{
     display:block;font-size:11.5px;color:var(--ink-soft);margin-bottom:6px;
     font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:0.03em;
   }
   .track-field input, .track-field select{
-    width:100%;border:1px solid var(--line);border-radius:8px;padding:10px 12px;
+    width:100%;min-width:0;box-sizing:border-box;border:1px solid var(--line);border-radius:8px;padding:10px 12px;
     font-size:14px;font-family:'Inter',sans-serif;background:var(--paper);color:var(--ink);
   }
   .track-add-btn{
@@ -1131,10 +1155,10 @@
 
 <div class="wrap" id="home">
   <section class="hero">
-    <div>
+    <div class="hero-title-block">
       <p class="welcome-greeting" id="heroWelcome">Welcome to The Price of Habits!</p>
       <h1>See what quitting is <span>truly worth.</span></h1>
-      <p class="lead"><strong>Smoking, drinking, vaping — the cost seldom presents itself as one large sum.</strong> It departs a little at a time, until it amounts to real money. Enter what you spend below, and observe the true total — day by day, year by year.</p>
+      <p class="lead"><strong>Smoking, drinking, vaping — you never see the real cost as one big number.</strong> It's just a few dollars here and there, so it doesn't feel like much in the moment. But add it up over a week, a year, ten years, and it's a completely different story. Type in what you actually spend below, and watch the real total build in front of you — no guesswork, just simple math with your own numbers.</p>
       <div class="hero-stats">
         <div class="hero-stat"><span class="n" id="heroDaily">$0</span><span class="l">per day</span></div>
         <div class="hero-stat"><span class="n" id="heroYear">$0</span><span class="l">per year</span></div>
@@ -1142,44 +1166,48 @@
       </div>
     </div>
 
-    <div class="purpose-card">
-      <p class="purpose-badge">Why this site exists</p>
-      <p class="purpose-text">A daily habit like smoking, drinking, or vaping rarely feels like real money in the moment — it's just a pack, a round, a pod. This site exists to add it up honestly, using nothing more than simple arithmetic on the numbers you already know. There's no judgment here, and no accounts to sign up for — just a clear, private picture of what a habit actually costs over a week, a year, and a decade, so you can weigh it against everything else that money could do. What you decide to do with that number is entirely up to you.</p>
-    </div>
-
-    <div class="receipt-wrap">
-      <div class="receipt">
-        <div class="r-title">HABIT RECEIPT</div>
-        <div class="r-sub" id="rSub">SMOKING · WEEKLY TAB</div>
-        <hr class="r-divider" />
-        <div class="r-line"><span class="desc" id="rItemLabel">packs x price</span><span class="amt" id="rItemAmt">$0.00</span></div>
-        <div class="r-line"><span class="desc">x 7 days</span><span class="amt" id="rWeekAmt">$0.00</span></div>
-        <div class="r-line"><span class="desc">x 52 weeks</span><span class="amt" id="rYearAmt">$0.00</span></div>
-        <hr class="r-divider" />
-        <div class="r-total"><span>TOTAL / YEAR</span><span class="amt" id="rTotal">$0.00</span></div>
-        <div class="r-stamp">THANK YOU FOR YOUR PATRONAGE</div>
-        <div class="barcode" aria-hidden="true"></div>
-        <div class="r-perf" aria-hidden="true"></div>
-      </div>
-    </div>
-
-    <div class="how-it-works">
-      <div class="auth-badge">✦ How it works</div>
-      <div class="hiw-steps">
-        <div class="hiw-step">
-          <span class="hiw-num">01</span>
-          <p>Select a habit and enter what you spend on it.</p>
-        </div>
-        <div class="hiw-step">
-          <span class="hiw-num">02</span>
-          <p>The receipt calculates the total instantly — daily, weekly, and yearly.</p>
-        </div>
-        <div class="hiw-step">
-          <span class="hiw-num">03</span>
-          <p>See the complete breakdown and long-term figures instantly.</p>
+    <div class="hero-how-block">
+      <div class="how-it-works">
+        <div class="auth-badge">✦ How it works</div>
+        <div class="hiw-steps">
+          <div class="hiw-step">
+            <span class="hiw-num">01</span>
+            <p>Select a habit and enter what you spend on it.</p>
+          </div>
+          <div class="hiw-step">
+            <span class="hiw-num">02</span>
+            <p>The receipt calculates the total instantly — daily, weekly, and yearly.</p>
+          </div>
+          <div class="hiw-step">
+            <span class="hiw-num">03</span>
+            <p>See the complete breakdown and long-term figures instantly.</p>
+          </div>
         </div>
       </div>
     </div>
+
+    <div class="hero-receipt-block">
+      <div class="receipt-wrap receipt-wrap-lower">
+        <div class="receipt">
+          <div class="r-title">HABIT RECEIPT</div>
+          <div class="r-sub" id="rSub">SMOKING · WEEKLY TAB</div>
+          <hr class="r-divider" />
+          <div class="r-line"><span class="desc" id="rItemLabel">packs x price</span><span class="amt" id="rItemAmt">$0.00</span></div>
+          <div class="r-line"><span class="desc">x 7 days</span><span class="amt" id="rWeekAmt">$0.00</span></div>
+          <div class="r-line"><span class="desc">x 52 weeks</span><span class="amt" id="rYearAmt">$0.00</span></div>
+          <hr class="r-divider" />
+          <div class="r-total"><span>TOTAL / YEAR</span><span class="amt" id="rTotal">$0.00</span></div>
+          <div class="r-stamp">THANK YOU FOR YOUR PATRONAGE</div>
+          <div class="barcode" aria-hidden="true"></div>
+          <div class="r-perf" aria-hidden="true"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="purpose-section">
+    <p class="purpose-badge-big">Why this site exists</p>
+    <p class="purpose-text-big">A daily habit like smoking, drinking, or vaping doesn't feel like real money at the time — it's just a pack, a round, a pod. This site is here to add it all up for you, honestly, using nothing but basic math on numbers you already know. No judging, no accounts to make — just a clear, private look at what a habit is actually costing you over a week, a year, even ten years, so you can compare it to everything else that money could be doing instead. What you do with that number is completely up to you.</p>
   </section>
 
   <section class="calc" id="calc">
